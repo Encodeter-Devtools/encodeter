@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <rect x="0" y="0" width="64" height="64" rx="8" fill="#333"/>
+    <defs>
+        <linearGradient id="red1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F33"/>
+            <stop offset="100%" stop-color="#211"/>
+        </linearGradient>
+        <linearGradient id="red2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#822"/>
+            <stop offset="100%" stop-color="#211"/>
+        </linearGradient>
+        <linearGradient id="purple1" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#529"/>
+            <stop offset="100%" stop-color="#212"/>
+        </linearGradient>
+        <linearGradient id="purple2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#92F"/>
+            <stop offset="100%" stop-color="#212"/>
+        </linearGradient>
+        <linearGradient id="blue1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#47F"/>
+            <stop offset="100%" stop-color="#112"/>
+        </linearGradient>
+    </defs>
+    <path d="M 5 32 L 11 32 L 26 52 L 20 52 Z" fill="url(#red2)"/>
+    <path d="M 20 12 L 26 12 L 9 37 L 5 32 Z" fill="url(#red1)"/>
+    <path d="M 44 12 L 38 12 L 53 32 L 59 32 Z" fill="url(#purple1)"/>
+    <path d="M 55 27 L 59 32 L 44 52 L 38 52 Z" fill="url(#purple2)"/>
+    <path d="M 21 42 L 28 42 L 43 22 L 36 22 Z" fill="url(#blue1)"/>
+</svg>
