@@ -4,7 +4,11 @@
 
 EnCodeter, a code editor or an IDE.
 
-## Devolopers
+## Run `.jar` file
+
+Use command: `java --module-path C:\javafx-sdk-21.0.9\lib --add-modules javafx.base,javafx.controls,javafx.fxml,javafx.graphics -jar a.jar`.
+
+## Developers
 
 - Encodeter Devtools
   - Haohao123coding
