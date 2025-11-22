@@ -10,5 +10,5 @@ Use command: `java --module-path C:\javafx-sdk-21.0.9\lib --add-modules javafx.b
 
 ## Developers
 
-- Encodeter Devtools
+- EnCodeter Devtools
   - Haohao123coding
