@@ -1,13 +1,1 @@
-####################################################################################################################
-# WARNING: Do not store sensitive information in this file, as its contents will be included in the Qodana report. #
-####################################################################################################################
-version: "1.0"
-profile:
-  name: qodana.starter
 
-licenseRules:
-  - keys:
-      - "MIT"
-    allowed:
-      # JavaFX with Classpath Exception
-      - "GPL-2.0-only"
