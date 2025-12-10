@@ -4,13 +4,10 @@
 version: "1.0"
 profile:
   name: qodana.starter
-license:
-  # 允许特定的许可证组合
-  allowed:
-    - name: "GPL-2.0-only"
-      reason: "JavaFX with Classpath Exception"
-      artifacts:
-        - "org.openjfx:javafx-controls"
-        - "org.openjfx:javafx-fxml"
-        - "org.openjfx:javafx-base"
-        - "org.openjfx:javafx-graphics"
+
+licenseRules:
+  - keys:
+      - "MIT"
+    allowed:
+      # JavaFX with Classpath Exception
+      - "GPL-2.0-only"
