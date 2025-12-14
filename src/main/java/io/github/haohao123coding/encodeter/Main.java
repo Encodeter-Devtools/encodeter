@@ -17,7 +17,7 @@ public class Main extends Application{
 
         Scene scene = new Scene(root, 400, 300);
 
-        primaryStage.setTitle("Encodeter IDE");
+        primaryStage.setTitle("EnCodeter IDE");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
