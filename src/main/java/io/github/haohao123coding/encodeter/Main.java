@@ -9,19 +9,13 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Main extends Application{
     private Stage primaryStage;
     private TextArea textArea;
     private Label statusLabel;
-    private File currentFile;
+    private EditorFile editorFile;
 
     public static void main(String[] args){
         launch(args);
@@ -30,6 +24,7 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
+        this.editorFile = new EditorFile();
         primaryStage.setTitle("EnCodeter IDE");
 
         BorderPane root = createRootLayout();
@@ -113,70 +108,34 @@ public class Main extends Application{
     }
 
     private void newFile(){
-        textArea.clear();
-        currentFile = null;
-        primaryStage.setTitle("EnCodeter IDE - New File");
+        editorFile.newFile(textArea, primaryStage);
         updateStatus();
     }
 
     private void openFile(){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose file to open");
-        fileChooser.getExtensionFilters().setAll(
-            new FileChooser.ExtensionFilter("All files", "*.*"),
-            new FileChooser.ExtensionFilter("Text", "*.txt"),
-            new FileChooser.ExtensionFilter("C++", "*.cpp"),
-            new FileChooser.ExtensionFilter("Java", "*.java"),
-            new FileChooser.ExtensionFilter("Python", "*.py")
-        );
-
-        File file = fileChooser.showOpenDialog(primaryStage);
-        if(file != null){
-            try{
-                String content = new String(Files.readAllBytes(Paths.get(file.getAbsolutePath())));
-                textArea.setText(content);
-                currentFile = file;
-                primaryStage.setTitle("EnCodeter IDE - " + file.getName());
-                updateStatus();
-            }catch(IOException e){
-                showAlert(String.format("Error: cannot open file: %s", e.getMessage()));
-            }
+        String alartMessage = editorFile.openFile(textArea, primaryStage);
+        if(alartMessage.isEmpty()){
+            updateStatus();
+        }else{
+            showAlert(alartMessage);
         }
     }
 
     private void saveFile(){
-        if(currentFile == null){
-            saveAsFile();
+        String alartMessage = editorFile.saveFile(textArea, primaryStage);
+        if(alartMessage.isEmpty()){
+            updateStatus();
         }else{
-            save(currentFile);
+            showAlert(alartMessage);
         }
     }
 
     private void saveAsFile(){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save file");
-        fileChooser.getExtensionFilters().setAll(
-            new FileChooser.ExtensionFilter("All files", "*.*"),
-            new FileChooser.ExtensionFilter("Text", "*.txt"),
-            new FileChooser.ExtensionFilter("C++", "*.cpp"),
-            new FileChooser.ExtensionFilter("Java", "*.java"),
-            new FileChooser.ExtensionFilter("Python", "*.py")
-        );
-
-        File file = fileChooser.showSaveDialog(primaryStage);
-        save(file);
-    }
-
-    private void save(File file){
-        if(file != null){
-            try{
-                Files.write(Paths.get(file.getAbsolutePath()), textArea.getText().getBytes());
-                currentFile = file;
-                primaryStage.setTitle("EnCodeter IDE - " + file.getName());
-                updateStatus();
-            }catch(IOException e){
-                showAlert(String.format("Error: cannot save file: %s", e.getMessage()));
-            }
+        String alartMessage = editorFile.saveAsFile(textArea, primaryStage);
+        if(alartMessage.isEmpty()){
+            updateStatus();
+        }else{
+            showAlert(alartMessage);
         }
     }
 
